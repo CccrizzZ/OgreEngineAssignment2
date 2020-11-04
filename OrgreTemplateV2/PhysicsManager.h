@@ -13,11 +13,12 @@ public:
 	virtual ~PhysicsManager() {}
 
 
-	void Setup();
+	void Setup(SceneNode* c);
 	void UpdatePlayer(Player* p, Real deltatime, Vector3 ptrans);
 
 	float GravityInt;
 	Vector3 Gravity;
+	SceneNode* camref;
 	
 };
 

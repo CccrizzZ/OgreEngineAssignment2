@@ -25,7 +25,7 @@ void Player::update()
 
 }
 
-void Player::Move(Vector3 Grav, Real dt, Vector3 Ptranslate)
+void Player::Move(Vector3 Grav, Real dt, Vector3 Ptranslate, Vector3 campos)
 {
 
 
@@ -40,13 +40,14 @@ void Player::Move(Vector3 Grav, Real dt, Vector3 Ptranslate)
 	}
 	else
 	{
+		isCollide = false;
 		// while falling
 		PlayerAcceleration = Grav;
 		PlayerNode->translate(PlayerAcceleration * dt * 80);
 	}
 
 	// if collided with platform
-	if (GetPosition().y <= 0 )
+	if (GetPosition().y <= campos.y -85  || isCollide)
 	{
 		// save gravity and jump start position
 		tempAcc = Grav;
@@ -58,11 +59,13 @@ void Player::Move(Vector3 Grav, Real dt, Vector3 Ptranslate)
 	if (GetPosition().y - jumpPosY > JumpLimit)
 	{
 		Jumping = false;
+		isCollide = false;
 	}
 
 
 	// left right movement
 	PlayerNode->translate(Ptranslate * dt * 10);
+	isCollide = false;
 
 
 	//cout << GetPosition().y << "\n";
@@ -83,8 +86,8 @@ void Player::SetPosition(Vector3 position)
 
 void Player::Bounce()
 {
-	SetPosition(GetPosition() - PlayerAcceleration *100);
-
+	score += 100;
+	isCollide = true;
 }
 
 Vector3 Player::GetPosition()

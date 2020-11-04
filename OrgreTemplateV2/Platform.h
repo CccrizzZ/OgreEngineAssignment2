@@ -11,7 +11,7 @@ public:
 	virtual ~Platform() {}
 
 
-	void Setup(SceneManager* scnMgr, Vector3 position);
+	void Setup(SceneManager* scnMgr, Vector3 position, MaterialPtr pmat);
 	void Update();
 	
 	void SetPosition(float x, float y, float z);

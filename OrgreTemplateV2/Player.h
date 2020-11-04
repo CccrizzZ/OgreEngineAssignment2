@@ -14,7 +14,7 @@ public:
 
 	void Setup(SceneManager* scnMgr, Vector3 position, Vector3 scale, MaterialPtr pmat);
 	void update();
-	void Move(Vector3 Grav, Real dt, Vector3 Ptranslate);
+	void Move(Vector3 Grav, Real dt, Vector3 Ptranslate, Vector3 campos);
 
 	void SetPosition(float x, float y, float z);
 	void SetPosition(Vector3 position);
@@ -32,6 +32,8 @@ public:
 	float JumpLimit;
 	bool Jumping;
 	float jumpPosY;
+	bool isCollide;
+	int score;
 
 };
 

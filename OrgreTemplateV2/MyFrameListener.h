@@ -48,7 +48,7 @@ public:
 		AudioMgr = new AManager();
 
 		LogicMgr->Setup(SceneMgr, p);
-		PhysicMgr->Setup();
+		PhysicMgr->Setup(_CameraNode);
 
 	}
 
@@ -70,7 +70,7 @@ public:
 		_BackGroundNode->setPosition(_CameraNode->getPosition() + Vector3(0, 0, -600));
 
 		LogicMgr->Update();
-
+		LogicMgr->MoveRandomPlatform(SceneMgr, _CameraNode);
 		//_CameraNode->setPosition(_PlayerNode->getPosition() + Vector3(0, 47, 222));
 
 

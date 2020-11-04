@@ -69,7 +69,7 @@ public:
     // Material
     MaterialPtr BackGroundMaterial;
     MaterialPtr PlayerMaterial;
-    MaterialPtr PlatformMaterial;
+
 
     Rectangle2D* rect;
     AxisAlignedBox aabInf;
@@ -78,7 +78,8 @@ public:
     TrayListener myTrayListener;
     Label* mInfoLabel;
     TrayManager* mTrayMgr;
-
+    string scoreStr;
+    StringVector names;
     
 
 };

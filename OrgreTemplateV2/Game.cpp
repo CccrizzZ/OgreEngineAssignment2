@@ -6,7 +6,7 @@ Game::Game() : ApplicationContext("Doodle")
 {
     playerOBJ = new Player();
     backgroundOBJ = new Background();
-
+    score = 0;
 
 }
 
@@ -32,6 +32,13 @@ Game::~Game()
         delete[] backgroundOBJ;
         backgroundOBJ = 0;
     }
+
+    if (shadergen)
+    {
+        shadergen = 0;
+
+    }
+    
     
     if (FrameLsnr)
     {
@@ -111,17 +118,17 @@ void Game::UISetup()
 
 
     // parse score into string
-    string scoreStr = to_string(score);
+    scoreStr = to_string(score);
 
     // Label with text 1
     // Score label
-    mInfoLabel = mTrayMgr->createLabel(TL_TOPRIGHT, "GameInfo", "Score: " + score, 180);
+    mInfoLabel = mTrayMgr->createLabel(TL_TOPRIGHT, "GameInfo", "Score: " + scoreStr, 180);
 
     // // Label with text 2
     // // Unused
-    // StringVector names;
-    // names.push_back("This is a Doodle Jump Clone");
-    // mTrayMgr->createParamsPanel(TL_TOPLEFT, "Help", 350, names)->setParamValue(0, "H/F1");
+    
+    //names.push_back("0");
+    //mTrayMgr->createParamsPanel(TL_TOPLEFT, "Help", 350, names)->setParamValue(0, "H/F1");
 
     mTrayMgr->hideCursor();
 
@@ -247,7 +254,7 @@ bool Game::keyPressed(const KeyboardEvent& evt)
         getRoot()->queueEndRendering();
         break;
     case 'w':
-        FrameLsnr->PlayerTranslate = Vector3(0, 10, 0);
+        FrameLsnr->PlayerTranslate = Vector3(0, 100, 0);
         break;
     case 'q':
         camNode->setPosition(camNode->getPosition() + Vector3(0, 0, 10));
@@ -296,5 +303,5 @@ bool Game::keyReleased(const KeyboardEvent& evt)
 
 void Game::frameRendered(const FrameEvent& evt)
 {
-     
+
 }

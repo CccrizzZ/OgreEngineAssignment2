@@ -2,11 +2,11 @@
 
 Platform::Platform()
 {
-	pSize = Vector3(0.2f, 0.05f, 0.0f);
+	pSize = Vector3(0.1f, 0.01f, 0.0f);
 	
 }
 
-void Platform::Setup(SceneManager* scnMgr, Vector3 position)
+void Platform::Setup(SceneManager* scnMgr, Vector3 position, MaterialPtr pmat)
 {
 	PlatformNode = scnMgr->getRootSceneNode()->createChildSceneNode();
 	PlatformNode->setPosition(position);
@@ -14,6 +14,7 @@ void Platform::Setup(SceneManager* scnMgr, Vector3 position)
 
 	PlatformEntity = scnMgr->createEntity(scnMgr->PT_PLANE);
 	PlatformNode->attachObject(PlatformEntity);
+	PlatformEntity->setMaterial(pmat);
 }
 
 void Platform::Update()

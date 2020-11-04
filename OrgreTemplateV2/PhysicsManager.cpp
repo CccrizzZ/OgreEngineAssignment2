@@ -8,9 +8,9 @@ PhysicsManager::PhysicsManager()
 	Gravity = Vector3(0, GravityInt, 0);
 }
 
-void PhysicsManager::Setup()
+void PhysicsManager::Setup(SceneNode* c)
 {
-
+	camref = c;
 
 }
 
@@ -26,7 +26,7 @@ void PhysicsManager::UpdatePlayer(Player* p, Real deltatime, Vector3 ptrans)
 	//}
 	
 	// move player according to gravity
-	p->Move(Gravity, deltatime, ptrans);
+	p->Move(Gravity, deltatime, ptrans, camref->getPosition());
 
 }
 

@@ -3,16 +3,18 @@
 LogicManager::LogicManager()
 {
 	Score = 0;
+	cameraSpeed = Vector3::ZERO;
 }
 
 void LogicManager::Update()
 {
 	for (int i = 0; i < pVector.size(); i++)
 	{
-		if (CollisionDetectionTopOnly(pref->PlayerNode, pVector[i]->PlatformNode) )
+		if (CollisionDetectionBotOnly(pref->PlayerNode, pVector[i]->PlatformNode) )
 		{
-			cout << "Collided" << "\n";
+			cout << "Collided with: " << pVector[i]->GetPosition() << "\n";
 			
+			pref->Bounce();
 		}
 		else
 		{
@@ -27,56 +29,82 @@ void LogicManager::Update()
 
 void LogicManager::Setup(SceneManager* scnMgr, Player* p)
 {
+	// player reference
 	pref = p;
-
+	
+	// random seed
 	srand(time(NULL));
 
-	for (int i = 1; i < 16; i++)
+	// platform material
+	PlatformMaterial = Ogre::MaterialManager::getSingleton().create("plat", "General");
+	PlatformMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("platform.png");
+	PlatformMaterial->getTechnique(0)->getPass(0)->setAlphaRejectSettings(Ogre::CMPF_GREATER_EQUAL, 128, true);
+	PlatformMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
+	PlatformMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
+	PlatformMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(true);
+
+	
+	for (int i = 1; i < 30; i++)
 	{
 		Platform* tempPlatform = new Platform();
 
-		Vector3 tempPosition = Vector3(rand() % 10, rand() % 10, 0);
-		tempPlatform->Setup(scnMgr, tempPosition);
+		// setup platform with random position 
+		Vector3 tempPosition = Vector3((rand() % 300) - 150, (rand() % 250) - 150, 0);
+		tempPlatform->Setup(scnMgr, tempPosition, PlatformMaterial);
 		
 		pVector.push_back(tempPlatform);
 		
 
 	}
+
+
+
 }
 
-bool LogicManager::CollisionDetectionTopOnly(SceneNode* s1, SceneNode* s2)
+bool LogicManager::CollisionDetectionBotOnly(SceneNode* player, SceneNode* platform)
 {
 
-	if (s1->getPosition().x < s2->getPosition().x + s2->getScale().x &&
-		s1->getPosition().x + s1->getScale().x > s2->getPosition().x &&
-		s1->getPosition().y < s2->getPosition().y + s2->getScale().y &&
-		s1->getPosition().y + s1->getScale().y > s2->getScale().y
+	if (player->getPosition().x < platform->getPosition().x + platform->getScale().x+2 &&
+		player->getPosition().x + player->getScale().x+2 > platform->getPosition().x &&
+		player->getPosition().y < platform->getPosition().y + platform->getScale().y+2 
+		//&& player->getPosition().y + player->getScale().y > platform->getScale().y
 	)
 	{
 			return true;
 	}
-
 	return false;
 }
 
 void LogicManager::CameraMover(SceneNode* cam, Player* p, Real deltatime)
 {
-	if (p->GetPosition().y - cam->getPosition().y > 50)
+	if (p->GetPosition().y - cam->getPosition().y > 30)
 	{
-		while (cam->getPosition().y < p->GetPosition().y + 47)
+		if (cam->getPosition().y < p->GetPosition().y + 47)
 		{
-			cam->translate(Vector3(0, 0.01f, 0) * deltatime);
+			cameraSpeed += Vector3(0, 5, 0);
+			cam->translate(cameraSpeed * deltatime);
 
 		}
 
 	}
+	else 
+	{
+		cameraSpeed = Vector3::ZERO;
+	}
 	
 }
 
-void LogicManager::MoveRandomPlatform(SceneManager* scnMgr, Camera* cam)
+void LogicManager::MoveRandomPlatform(SceneManager* scnMgr, SceneNode* cam)
 {
 	
-
+	for (int i = 0; i < pVector.size(); i++)
+	{
+		if (pVector[i]->GetPosition().y < cam->getPosition().y - 100)
+		{
+			pVector[i]->SetPosition(Vector3((rand() % 300) - 150, (rand() % 250) - 150 + cam->getPosition().y, 0));
+			cout << "platfrom reset!!" << "\n";
+		}
+	}
 
 
 }
