@@ -14,7 +14,7 @@ public:
 
 
 	void Setup();
-	void UpdatePlayer(Player* p);
+	void UpdatePlayer(Player* p, Real deltatime, Vector3 ptrans);
 
 	float GravityInt;
 	Vector3 Gravity;

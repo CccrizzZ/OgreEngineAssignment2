@@ -10,8 +10,8 @@ void Background::Setup(SceneManager* scnMgr, Vector3 position, Vector3 scale)
 	BackgroundNode->setPosition(position);
 	BackgroundNode->setScale(scale);
 
-	BackgroundEntity = scnMgr->createEntity("ogrehead.mesh");
-	BackgroundNode->attachObject(BackgroundEntity);
+	//BackgroundEntity = scnMgr->createEntity("ogrehead.mesh");
+	//BackgroundNode->attachObject(BackgroundEntity);
 }
 
 void Background::SetPosition(float x, float y, float z)

@@ -2,15 +2,17 @@
 
 Platform::Platform()
 {
+	pSize = Vector3(0.2f, 0.05f, 0.0f);
+	
 }
 
-void Platform::Setup(SceneManager* scnMgr, Vector3 position, Vector3 scale)
+void Platform::Setup(SceneManager* scnMgr, Vector3 position)
 {
 	PlatformNode = scnMgr->getRootSceneNode()->createChildSceneNode();
 	PlatformNode->setPosition(position);
 	PlatformNode->setScale(pSize);
 
-	PlatformEntity = scnMgr->createEntity(scnMgr->PT_CUBE);
+	PlatformEntity = scnMgr->createEntity(scnMgr->PT_PLANE);
 	PlatformNode->attachObject(PlatformEntity);
 }
 
@@ -31,5 +33,10 @@ void Platform::SetPosition(Vector3 pos)
 Vector3 Platform::GetPosition()
 {
 	return Vector3(PlatformNode->getPosition());
+}
+
+Vector3 Platform::GetScale()
+{
+	return PlatformNode->getScale();
 }
 

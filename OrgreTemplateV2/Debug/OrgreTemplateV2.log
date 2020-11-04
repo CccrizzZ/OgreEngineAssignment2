@@ -1,0 +1,15 @@
+﻿  Background.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Background.h(2,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  Game.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Game.h(3,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  LogicManager.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Player.h(2,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  PhysicsManager.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Player.h(2,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  Platform.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Platform.h(2,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  Player.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Player.h(2,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  Source.cpp
+D:\GameEngineDevelopment\OrgreTemplateV2\OrgreTemplateV2\Source.cpp(1,10): fatal error C1083: Cannot open include file: 'Ogre.h': No such file or directory
+  Generating Code...

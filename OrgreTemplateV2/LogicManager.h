@@ -15,13 +15,15 @@ public:
 
 
 	void Update();
-	void Setup(SceneManager* scnMgr);
-	bool CollisionDetectionAABB(Entity* e1, Entity* e2);
-	void CameraMover(Camera& cam, Player& p);
+	void Setup(SceneManager* scnMgr, Player* p);
+	bool CollisionDetectionTopOnly(SceneNode* s1, SceneNode* s2);
+	void CameraMover(SceneNode* cam, Player* p, Real deltatime);
 	void MoveRandomPlatform(SceneManager* scnMgr, Camera* cam);
 
 	int Score;
 	std::vector<Platform*> pVector;
+
+	Player* pref;
 
 };
 

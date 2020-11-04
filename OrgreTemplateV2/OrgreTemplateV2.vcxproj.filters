@@ -62,5 +62,11 @@
     <ClInclude Include="MyFrameListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Audiere\include\audiere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

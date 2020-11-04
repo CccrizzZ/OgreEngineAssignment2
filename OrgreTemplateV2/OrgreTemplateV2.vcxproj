@@ -118,13 +118,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OGRE_HOME_V2)/Components/Bites/Include;$(OGRE_HOME_V2)/OgreMain/Include;$(OGRE_HOME_V2)/Components/Overlay/Include;$(OGRE_HOME_V2)/Components/Paging/Include;$(OGRE_HOME_V2)/Components/Terrain/Include;$(OGRE_HOME_V2)/Build/Include;$(OGRE_HOME_V2)/Components/RTShaderSystem/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Audiere/include;$(OGRE_HOME_V2)/Components/Bites/Include;$(OGRE_HOME_V2)/OgreMain/Include;$(OGRE_HOME_V2)/Components/Overlay/Include;$(OGRE_HOME_V2)/Components/Paging/Include;$(OGRE_HOME_V2)/Components/Terrain/Include;$(OGRE_HOME_V2)/Build/Include;$(OGRE_HOME_V2)/Components/RTShaderSystem/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OGRE_HOME_V2)/build/lib/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain_d.lib;OgreBites_d.lib;OgreRTShaderSystem_d.lib;OgreOverlay_d.lib;OgreTerrain_d.lib;OgrePaging_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>./Audiere/lib;$(OGRE_HOME_V2)/build/lib/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain_d.lib;OgreBites_d.lib;OgreRTShaderSystem_d.lib;OgreOverlay_d.lib;OgreTerrain_d.lib;OgrePaging_d.lib;audiere.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -163,9 +163,11 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audiere\include\audiere.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="ConsoleColor.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="AManager.h" />
     <ClInclude Include="LogicManager.h" />
     <ClInclude Include="MyFrameListener.h" />
     <ClInclude Include="PhysicsManager.h" />
